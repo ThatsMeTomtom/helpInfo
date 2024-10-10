@@ -17,3 +17,8 @@ echo -e "\n#### Processor Information"
 echo "Processor: $(lscpu | grep "Model name" | cut -d ':' -f2 | sed -e 's/^[[:space:]]*//')"
 echo "Number of cores: $(nproc)"
 
+#### Disk Space
+echo -e "\n#### Disk Space"
+df -h / | awk 'NR==2 {printf "Free: %.2f GB /
+Total: %s\n", $4, $2}'
+
